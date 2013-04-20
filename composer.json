@@ -1,0 +1,26 @@
+{
+    "name": "kpacha/som-rabbit-bundle",
+    "type": "symfony-bundle",
+    "description": "Success-O-Meter rabbit-powered Bundle",
+    "keywords": ["analytics", "rabbitmq", "mongodb", "symfony"],
+    "homepage": "http://github.com/kpacha/SOM",
+    "license": "MIT",
+    "require": {
+        "php": "5.4.*",
+        "kpacha/som-bundle": "dev-master",
+        "oldsound/rabbitmq-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kpacha\\SOMRabbitMQBundle": ""
+        }
+    },
+    "repositories": [
+        {"type": "vcs", "url": "https://github.com/kpacha/SOMBundle"}
+     ],
+    "target-dir": "Kpacha/SOMRabbitMQBundle",
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    }
+}

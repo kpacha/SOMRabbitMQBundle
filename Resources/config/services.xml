@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="kpacha_som.tracker.class">Kpacha\SOMRabbitMQBundle\Service\RabbitMongoTrackService</parameter>
+        <parameter key="kpacha_som.track_consumer.class">Kpacha\SOMRabbitMQBundle\Consumer\RawTrackConsumer</parameter>
+    </parameters>
+    
+    <services>
+        <service id="kpacha_som.tracker" class="%kpacha_som.tracker.class%">
+            <argument type="service" id="doctrine_mongodb" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="old_sound_rabbit_mq.track_producer" />
+        </service>
+        <service id="kpacha_som.track_consumer" class="%kpacha_som.track_consumer.class%">
+            <argument type="service" id="kpacha_som.tracker" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="old_sound_rabbit_mq.track_producer" />
+        </service>
+    </services>
+</container>
